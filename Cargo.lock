@@ -1,0 +1,23 @@
+[root]
+name = "who_casa"
+version = "0.1.0"
+dependencies = [
+ "toml 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "serde"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "toml"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "serde 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[metadata]
+"checksum serde 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)" = "36cdd74a4ac50d70024fb58b204a9892f422cb460d71001bd31a8fa03c79d0e7"
+"checksum toml 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "3063405db158de3dce8efad5fc89cf1baffb9501a3647dc9505ba109694ce31f"

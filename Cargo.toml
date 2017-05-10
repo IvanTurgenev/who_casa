@@ -4,3 +4,4 @@ version = "0.1.0"
 authors = ["IvanTurgenev <kenneth19949@gmail.com>"]
 
 [dependencies]
+toml = "0.4"
