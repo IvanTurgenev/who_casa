@@ -1,0 +1,11 @@
+# config.example.toml
+ip_rang = "192.168.1.0/24" # network range, see gateway
+
+api_key = "YOUR KEY"
+channel_name = "YOUR CHANNEL NAME"
+
+# stringis for has leaved and has entered
+
+str_enter = "has entered"
+str_leave = "has leaved"
+
