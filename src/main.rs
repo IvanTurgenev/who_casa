@@ -36,7 +36,7 @@ fn parseconfig(path: &str) -> Config {
     return conf;
 }
 
-fn nmac(conf: Config) -> String {
+fn nmac<'a>(conf: Config) -> Vec<&'a str> {
     //let ipref = &[" ", &conf.ip_rang].concat();
     let ipr = OsStr::new(&conf.ip_rang);
     let output = Command::new("nmap")
@@ -51,18 +51,21 @@ fn nmac(conf: Config) -> String {
     // .output()
     // .expect("failed to execute process");
     let out = String::from_utf8_lossy(&output.stdout);
-    println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
-    return out.to_string();
+    //println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
+    let re = Regex::new(r"([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})").unwrap();
+    let mut macad = vec![];
+    for caps in re.captures_iter(&out) {
+        //println!("{:}", caps.get(0).unwrap().as_str());
+        macad.push(caps.get(0).unwrap().as_str());
+    }
+
+    return macad;
 }
 
 fn main() {
     //println!("{}", parsefiles("config.example.toml"));
     println!("Hello, world!");
     let conf = parseconfig("config.example.toml");
-    let parsnmac = nmac(conf);
-
-    let re = Regex::new(r"([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})").unwrap();
-    for caps in re.captures_iter(&parsnmac) {
-        println!("{:}", caps.get(0).unwrap().as_str());
-    }
+    let macad = nmac(conf);
+    println!("{:?}", macad);
 }
