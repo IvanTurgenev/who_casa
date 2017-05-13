@@ -36,7 +36,7 @@ fn parseconfig(path: &str) -> Config {
     return conf;
 }
 
-fn nmac<'a>(conf: Config) -> Vec<&'a str> {
+fn nmac(conf: Config) -> Vec<String> {
     //let ipref = &[" ", &conf.ip_rang].concat();
     let ipr = OsStr::new(&conf.ip_rang);
     let output = Command::new("nmap")
@@ -56,7 +56,7 @@ fn nmac<'a>(conf: Config) -> Vec<&'a str> {
     let mut macad = vec![];
     for caps in re.captures_iter(&out) {
         //println!("{:}", caps.get(0).unwrap().as_str());
-        macad.push(caps.get(0).unwrap().as_str());
+        macad.push(caps.get(0).unwrap().as_str().to_string());
     }
 
     return macad;
