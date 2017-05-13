@@ -1,5 +1,5 @@
 
-# whocasa
+# whocasa TEMPORARY NON APPLICABLE README
 
 Send notifications who leaves or enters home by cellphones, laptops etc.
 
